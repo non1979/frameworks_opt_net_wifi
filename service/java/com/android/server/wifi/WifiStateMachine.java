@@ -2102,6 +2102,7 @@ public class WifiStateMachine extends StateMachine implements WifiNative.WifiPno
      */
     public void setSupplicantRunning(boolean enable) {
         if (enable) {
+            WifiNative.setMode(0);
             sendMessage(CMD_START_SUPPLICANT);
         } else {
             sendMessage(CMD_STOP_SUPPLICANT);
@@ -2113,6 +2114,7 @@ public class WifiStateMachine extends StateMachine implements WifiNative.WifiPno
      */
     public void setHostApRunning(WifiConfiguration wifiConfig, boolean enable) {
         if (enable) {
+            WifiNative.setMode(1);
             sendMessage(CMD_START_AP, wifiConfig);
         } else {
             sendMessage(CMD_STOP_AP);
